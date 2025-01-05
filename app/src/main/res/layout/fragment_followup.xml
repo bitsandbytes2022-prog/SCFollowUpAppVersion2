@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:id="@+id/spinner_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textFontWeight="500"
+                android:drawableRight="@drawable/arrow_down"
+                android:text="Today's Priority"
+                android:paddingRight="10dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:paddingTop="15dp"
+                android:textColor="#979797"
+                android:id="@+id/priority_spinner"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <View
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:background="@color/div_color" />
+        </LinearLayout>
+
+
+
+<!--        <androidx.appcompat.widget.AppCompatEditText-->
+<!--            android:id="@+id/edtSearch1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="@dimen/_7sdp"-->
+<!--            android:drawableStart="@drawable/ic_search"-->
+<!--            android:drawablePadding="@dimen/_4sdp"-->
+<!--            android:fontFamily="@font/roboto_regular"-->
+<!--            android:hint="@string/search"-->
+<!--            android:inputType="textFilter"-->
+<!--            android:paddingVertical="@dimen/_14sdp"-->
+<!--            android:paddingEnd="@dimen/_10sdp"-->
+
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/_12ssp"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvPending"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="20dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_layout">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_10sdp">
+
+                <EditText
+                    android:textFontWeight="500"
+                    android:id="@+id/edtSearch"
+                    android:layout_marginBottom="10dp"
+                    android:padding="10dp"
+                    android:background="@drawable/edittext_border"
+                    android:drawableRight="@drawable/ic_search"
+                    android:hint="Search by name here...."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/dark_gray_text"
+                    android:textSize="@dimen/_13ssp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    android:background="@color/div_color" />
+                <TextView
+                    android:visibility="gone"
+                    android:layout_marginTop="40dp"
+                    android:textFontWeight="500"
+                    android:id="@+id/searhNoData"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="No Data Found"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvFollowup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edtSearch"
+                    tools:listitem="@layout/row_follow_up_list" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.card.MaterialCardView>
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/rvFollowup"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:orientation="vertical"-->
+        <!--            android:layout_marginTop="@dimen/_5sdp"-->
+        <!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/edtSearch"-->
+        <!--            tools:listitem="@layout/row_follow_up_list" />-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="No Today's Priority Data Found"
+            android:textColor="@color/dark_text"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

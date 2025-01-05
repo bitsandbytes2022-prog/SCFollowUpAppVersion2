@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:weightSum="1"
+        android:paddingBottom="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:background="#F3F3F3"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <EditText
+                android:visibility="gone"
+                android:layout_marginTop="10dp"
+                android:textFontWeight="500"
+                android:id="@+id/edtSearch"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:background="@drawable/edittext_border"
+                android:drawableRight="@drawable/ic_search"
+                android:hint="Search by name here...."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/dark_gray_text"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="gone"
+            android:id="@+id/lyt_search"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/spinner_bg">
+
+
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/searchTile"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Search Result"
+                android:textColor="#656565"
+                android:textSize="14sp"
+                android:fontFamily="@font/montserrat_bold"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginBottom="20dp"
+                android:paddingBottom="25dp"
+                android:id="@+id/rvSearch"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/searchTile"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_address_list" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:visibility="gone"
+                android:id="@+id/tvNoDataSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="No Data found"
+                android:textColor="@color/dark_text"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="gone"
+            android:layout_weight="0"
+            android:id="@+id/lyt_today"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/spinner_bg">
+
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:visibility="gone"
+                android:id="@+id/edtSearch2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_7sdp"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="@dimen/_4sdp"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/search"
+                android:inputType="textFilter"
+                android:paddingVertical="@dimen/_14sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/todayCallsTile"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Today's Priority"
+                android:textColor="#656565"
+                android:textSize="14sp"
+                android:fontFamily="@font/montserrat_bold"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:paddingBottom="25dp"
+                android:id="@+id/rvToday"
+                android:layout_width="match_parent"
+                android:scrollbars="vertical"
+                android:scrollbarSize="3dp"
+                android:fadeScrollbars="false"
+                android:layout_height="0dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/todayCallsTile"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_address_list" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:visibility="gone"
+                android:id="@+id/tvNoData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="No Data found"
+                android:textColor="@color/dark_text"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lytPending"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:paddingBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/spinner_bg">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:visibility="gone"
+                android:id="@+id/edtSearch1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_7sdp"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="@dimen/_4sdp"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/search"
+                android:inputType="textFilter"
+                android:paddingVertical="@dimen/_14sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/pendingCallsTile"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pending Calls"
+                android:textColor="#656565"
+                android:textSize="14sp"
+                android:fontFamily="@font/montserrat_bold"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:paddingBottom="25dp"
+                android:id="@+id/rvPending"
+                android:layout_width="match_parent"
+                android:scrollbars="vertical"
+                android:scrollbarSize="3dp"
+                android:fadeScrollbars="false"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/pendingCallsTile"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_address_list" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:visibility="gone"
+                android:id="@+id/tvNoData1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="No Data found"
+                android:textColor="@color/dark_text"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/noDataFound"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/roboto_medium"
+            android:text="No Address Data found"
+            android:textColor="@color/dark_text"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
+</layout>
