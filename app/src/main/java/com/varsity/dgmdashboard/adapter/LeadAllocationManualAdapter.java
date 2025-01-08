@@ -10,8 +10,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.varsity.dgmdashboard.R;
-import com.varsity.dgmdashboard.activity.LeadAllocationManuallyActivity;
-import com.varsity.dgmdashboard.databinding.RowAssignLeadBinding;
 import com.varsity.dgmdashboard.databinding.RowAssignLeadManuallyBinding;
 import com.varsity.dgmdashboard.model.GetProDetailsLeadResponse;
 import com.varsity.dgmdashboard.utils.SnackBar;
@@ -51,9 +49,9 @@ public class LeadAllocationManualAdapter extends RecyclerView.Adapter<LeadAlloca
         int total = list.get(position).getCommunicatedLeads() + list.get(position).getCompletedLeads() + list.get(position).getPendingLeads();
         holder.mBinding.tvTotalAllotmentCount.setText("" + total);
 
-        holder.mBinding.tvCommunicated.setText("Communicated " + list.get(position).getCommunicatedLeads());
-        holder.mBinding.tvConverted.setText("Converted " + list.get(position).getCompletedLeads());
-        holder.mBinding.tvPending.setText("Pending " + list.get(position).getPendingLeads());
+        holder.mBinding.tvCommunicated.setText(" " + list.get(position).getCommunicatedLeads());
+        holder.mBinding.tvConverted.setText(" " + list.get(position).getCompletedLeads());
+        holder.mBinding.tvPending.setText(" " + list.get(position).getPendingLeads());
 
         holder.mBinding.ivPlus.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -139,4 +139,6 @@
     <string name="pf_number">PF Number</string>
     <string name="today_priority">Today\'s Priority</string>
     <string name="pending_calls">Pending Calls</string>
+    <string name="communicated">Communicated</string>
+    <string name="converted">Converted</string>
 </resources>

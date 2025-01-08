@@ -284,22 +284,14 @@ public class DoorStepActivity extends AppCompatActivity {
                 date.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 date.set(Calendar.MINUTE, minute);
                 SimpleDateFormat df = new SimpleDateFormat("hh:mm a", Locale.US);
-                if (mBinding.tvOutTime.getText().toString().equalsIgnoreCase("")){
-                    String time = df.format(date.getTime());
-                    textView.setText(time);
-                }else {
-                    if (dateOut!=null){
+                if (dateOut!=null){
                         if(date.getTimeInMillis() > dateOut.getTimeInMillis()){
-                            SnackBar.showValidationError(DoorStepActivity.this, snakBarView, "Please Select valid time");
-                        }else{
-                            String time = df.format(date.getTime());
-                            textView.setText(time);
+                            dateOut =null;
+                            mBinding.tvOutTime.setText("");
                         }
-                    }else {
-                        String time = df.format(date.getTime());
-                        textView.setText(time);
-                    }
                 }
+                String time = df.format(date.getTime());
+                textView.setText(time);
 
             }
         }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();

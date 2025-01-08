@@ -61,58 +61,149 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:weightSum="3"
             app:layout_constraintTop_toBottomOf="@id/tvTotalAllotment"
             app:layout_constraintStart_toStartOf="parent">
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvCommunicated"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Communicated 10"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_weight="1"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 android:background="@drawable/communicated_rect_bg"
-                android:textColor="@color/color_communicated"
-                android:textSize="@dimen/_9ssp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
                 android:paddingTop="@dimen/_5sdp"
                 android:paddingBottom="@dimen/_5sdp"
                 android:paddingEnd="@dimen/_10sdp"
                 android:paddingStart="@dimen/_10ssp"
-                app:layout_constraintTop_toBottomOf="@id/tvTotalAllotment"
-                app:layout_constraintStart_toStartOf="parent" />
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvConverted"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Converted 2"
+                android:id="@+id/clComm"
+                app:layout_constraintEnd_toStartOf="@id/clConv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/communicated"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:textColor="@color/color_communicated"
+                    android:textSize="@dimen/_8ssp"
+                    android:ellipsize="end"
+                    android:id="@+id/tvTitleComm"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tvCommunicated"
+                    app:layout_constraintStart_toStartOf="parent" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCommunicated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text=" 10"
+                    app:layout_constraintStart_toEndOf="@id/tvTitleComm"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textColor="@color/color_communicated"
+                    android:textSize="@dimen/_9ssp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_weight="1"
                 android:background="@drawable/converted_rect_bg"
-                android:textColor="@color/color_converted"
-                android:textSize="@dimen/_9ssp"
-                android:paddingTop="@dimen/_5sdp"
-                android:paddingBottom="@dimen/_5sdp"
-                android:paddingEnd="@dimen/_10sdp"
-                android:paddingStart="@dimen/_10ssp"
-                app:layout_constraintTop_toBottomOf="@id/tvTotalAllotment"
-                app:layout_constraintStart_toEndOf="@id/tvCommunicated"
-                android:layout_marginStart="@dimen/_10sdp"/>
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvPending"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Pending 10"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:id="@+id/clConv"
+                app:layout_constraintEnd_toStartOf="@id/clPend"
+                android:paddingStart="@dimen/_10ssp"
+                app:layout_constraintStart_toEndOf="@id/clComm"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/converted"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:textColor="@color/color_converted"
+                    android:textSize="@dimen/_8ssp"
+                    android:ellipsize="end"
+                    android:id="@+id/tvConvTitle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tvConverted"
+                    app:layout_constraintStart_toStartOf="parent" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvConverted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text=" 10"
+                    app:layout_constraintStart_toEndOf="@id/tvConvTitle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textColor="@color/color_converted"
+                    android:textSize="@dimen/_9ssp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!--//pending-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_weight="1"
                 android:background="@drawable/pending_rect_bg"
-                android:textColor="@color/color_pending"
-                android:textSize="@dimen/_9ssp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal"
+                android:id="@+id/clPend"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/_5sdp"
                 android:paddingTop="@dimen/_5sdp"
                 android:paddingBottom="@dimen/_5sdp"
                 android:paddingEnd="@dimen/_10sdp"
                 android:paddingStart="@dimen/_10ssp"
-                app:layout_constraintTop_toBottomOf="@id/tvTotalAllotment"
-                app:layout_constraintStart_toEndOf="@id/tvConverted"
-                android:layout_marginStart="@dimen/_10sdp"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/clConv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/pending"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textColor="@color/color_pending"
+                    android:textSize="@dimen/_9ssp"
+                    android:ellipsize="end"
+                    android:id="@+id/tvPendingCountTitle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tvPending"
+                    app:layout_constraintStart_toStartOf="parent" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text=" 10"
+                    app:layout_constraintStart_toEndOf="@id/tvPendingCountTitle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textColor="@color/color_pending"
+                    android:textSize="@dimen/_9ssp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
 <!--        <androidx.appcompat.widget.AppCompatTextView-->
