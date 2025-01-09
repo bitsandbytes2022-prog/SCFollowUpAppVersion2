@@ -116,13 +116,18 @@ public class ProAddNotesActivity extends AppCompatActivity {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 request.setLeadStatusId(position);
+                                mBinding.tilAppNo.setVisibility(View.GONE);
                                 mBinding.spDispositions.setText(leadStatusList.get(position).getStatusName(), false);
                                 if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("CALL AGAIN")) {
                                     mBinding.llReminder.setVisibility(View.VISIBLE);
-                                } else{ if (mBinding.spSelect.getText().toString().equalsIgnoreCase("REMIND")) {
+                                }
+                                else{ if (mBinding.spSelect.getText().toString().equalsIgnoreCase("REMIND")) {
                                     mBinding.llReminder.setVisibility(View.VISIBLE);
                                 }else {
                                     mBinding.llReminder.setVisibility(View.GONE);
+                                }
+                                if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("ADMISSION TAKEN IN SC")){
+                                        mBinding.tilAppNo.setVisibility(View.VISIBLE);
                                 }
                             }
                             }
@@ -181,13 +186,15 @@ public class ProAddNotesActivity extends AppCompatActivity {
                 if (position != -1){
                     if (mBinding.spSelect.getText().toString().equalsIgnoreCase("REMIND")){
                         mBinding.llReminder.setVisibility(View.VISIBLE);
-                    }else{
+                    }
+                    else{
                         if (mBinding.spDispositions.getText().toString().equalsIgnoreCase("CALL AGAIN")){
                             mBinding.llReminder.setVisibility(View.VISIBLE);
                         }else {
                             mBinding.llReminder.setVisibility(View.GONE);
                         }
                     }
+
                 }
             }
         });
@@ -278,11 +285,22 @@ public class ProAddNotesActivity extends AppCompatActivity {
             return;
         }
 
-        if (mBinding.spDispositions.getText().toString().equalsIgnoreCase("Call Again")){
+        if (mBinding.spDispositions.getText().toString().equalsIgnoreCase("Call Again")||mBinding.spSelect.getText().toString().equalsIgnoreCase("REMIND")){
             if (mBinding.tvReminderDate.getText().toString().equalsIgnoreCase("")){
                 SnackBar.showValidationError(ProAddNotesActivity.this, snakBarView, "Please select reminder date");
                 return;
             }
+        }
+
+        if (mBinding.spDispositions.getText().toString().equalsIgnoreCase("ADMISSION TAKEN IN SC")){
+            if (mBinding.edtAppNo.getText().toString().equalsIgnoreCase("")){
+                SnackBar.showValidationError(ProAddNotesActivity.this, snakBarView, "Please enter Application number");
+                return;
+            }
+            request.setAppNo(mBinding.edtAppNo.getText().toString());
+        }
+        else{
+            request.setAppNo(null);
         }
 
 
@@ -296,6 +314,7 @@ public class ProAddNotesActivity extends AppCompatActivity {
         if (!mBinding.tvReminderDate.getText().toString().equalsIgnoreCase("")){
             request.setReminder(mBinding.tvReminderDate.getText().toString());
         }
+
         if (DGMDashboardApplication.getInstance().isNetworkAvailable()) {
             dashboardViewModel.addProNotesData(snakBarView, request).observe(this, responseModel -> {
                 AlertDialog.Builder builderSaved = new AlertDialog.Builder(ProAddNotesActivity.this, R.style.MaterialAlertDialogStyle);

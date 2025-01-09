@@ -307,12 +307,12 @@ public class ProDashboardFragment extends Fragment implements View.OnClickListen
     }
 
     private void setTotalLeadCount(DGMDashboardResponse.Total totalData) {
-        mBinding.tvPendingCount.setText("" + totalData.getPending());
+        mBinding.tvPendingCount.setText("" + totalData.getNotCommunicated());
         mBinding.tvPriority.setText("" + totalData.getTodays());
         int total = totalData.getPending() + totalData.getNotAssigned() + totalData.getAssigned() + totalData.getCommunicated() + totalData.getJoined() + totalData.getTodays() + totalData.getNotCommunicated();
         int totalFollowUpCount = totalData.getCommunicated() + totalData.getJoined() + totalData.getNotCommunicated();
-        mBinding.tvTotalLeadsCount.setText("" + total);
-        mBinding.tvFollowupCount.setText("" + totalFollowUpCount);
+        mBinding.tvTotalLeadsCount.setText("" + totalData.getTotalAllotaedCountTotal());
+        mBinding.tvFollowupCount.setText("" + totalData.getCommunicated());
     }
 
     private void setChart(ArrayList<DGMDashboardResponse.Districts> responses) {

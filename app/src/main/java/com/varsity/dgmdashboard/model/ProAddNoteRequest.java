@@ -10,6 +10,8 @@ public class ProAddNoteRequest {
     private int leadStatusId;
     private String reminder;
 
+    private String appNo;
+
     public String getReminder() {
         return reminder;
     }
@@ -72,5 +74,13 @@ public class ProAddNoteRequest {
 
     public void setLeadStatusId(int leadStatusId) {
         this.leadStatusId = leadStatusId;
+    }
+
+    public String getAppNo() {
+        return appNo;
+    }
+
+    public void setAppNo(String appNo) {
+        this.appNo = appNo;
     }
 }

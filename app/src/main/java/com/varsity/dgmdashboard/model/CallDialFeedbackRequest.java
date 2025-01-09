@@ -1,6 +1,7 @@
 package com.varsity.dgmdashboard.model;
 
 public class CallDialFeedbackRequest {
+    private Long appNo;
     private int assignedTo;
     private String comment;
     private String feedBack;
@@ -11,6 +12,14 @@ public class CallDialFeedbackRequest {
     private String mobileNo;
     private String source;
     private String reminder;
+
+    public Long getAppNo() {
+        return appNo;
+    }
+
+    public void setAppNo(Long appNo) {
+        this.appNo = appNo;
+    }
 
     public String getReminder() {
         return reminder;

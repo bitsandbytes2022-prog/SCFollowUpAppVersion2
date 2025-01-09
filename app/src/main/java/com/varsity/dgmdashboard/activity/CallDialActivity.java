@@ -208,6 +208,7 @@ public class CallDialActivity extends AppCompatActivity {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 if (position!=-1){
+                                    mBinding.tilAppNo.setVisibility(View.GONE);
                                     if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("CALL AGAIN")){
                                         mBinding.llReminder.setVisibility(View.VISIBLE);
                                     }else {
@@ -217,6 +218,9 @@ public class CallDialActivity extends AppCompatActivity {
                                                 mBinding.llReminder.setVisibility(View.VISIBLE);
                                             }else {
                                                 mBinding.llReminder.setVisibility(View.GONE);
+                                            }
+                                            if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("ADMISSION TAKEN IN SC")){
+                                                mBinding.tilAppNo.setVisibility(View.VISIBLE);
                                             }
                                         }else {
                                             mBinding.llReminder.setVisibility(View.GONE);
@@ -259,6 +263,18 @@ public class CallDialActivity extends AppCompatActivity {
                 return;
             }
         }
+
+        if (leadStatusList.get(mBinding.spDispositions.getSelectedItemPosition()).getStatusName().equalsIgnoreCase("ADMISSION TAKEN IN SC")){
+            if (mBinding.edtAppNo.getText().toString().equalsIgnoreCase("")){
+                SnackBar.showValidationError(CallDialActivity.this, snakBarView, "Please enter Application number");
+                return;
+            }
+            callDialFeedbackRequest.setAppNo(Long.parseLong(mBinding.edtAppNo.getText().toString()));
+        }
+        else{
+            callDialFeedbackRequest.setAppNo(null);
+        }
+
         if (mBinding.edtComment.getText().toString().equalsIgnoreCase("")) {
             SnackBar.showValidationError(CallDialActivity.this, snakBarView, "Please enter comments");
             return;

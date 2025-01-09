@@ -25,6 +25,9 @@ public class SaveLeadData {
         @SerializedName("leadStatusId")
         @Expose
         private Integer leadStatusId;
+        @SerializedName("appNo")
+        @Expose
+        private Integer appNo;
 
     public Integer getAppNo() {
         return appNo;
@@ -34,9 +37,6 @@ public class SaveLeadData {
         this.appNo = appNo;
     }
 
-    @SerializedName("appNo")
-    @Expose
-    private Integer appNo;
 
         public Integer getAssignedTo() {
             return assignedTo;

@@ -306,6 +306,37 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0.7dp"
                                 android:background="@color/black" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilAppNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="0dp"
+                            tools:visibility="visible"
+                            android:visibility="gone"
+                            android:dividerPadding="0dp">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/edtAppNo"
+                                android:background="@color/white"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:digits="1234567890"
+                                android:hint="Application Number *"
+                                android:fontFamily="@font/roboto_regular"
+                                android:inputType="phone"
+                                android:includeFontPadding="false"
+                                android:maxLength="10"
+                                android:paddingTop="28dp"
+                                android:layout_marginBottom="0dp"
+                                android:paddingBottom="5dp"
+                                android:paddingStart="0dp"
+                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/gray_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
                         <androidx.appcompat.widget.AppCompatTextView

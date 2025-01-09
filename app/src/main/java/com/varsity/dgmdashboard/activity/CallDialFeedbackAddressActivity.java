@@ -400,6 +400,7 @@ public class CallDialFeedbackAddressActivity extends AppCompatActivity {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 if (position != -1) {
+                                    mBinding.tilAppNo.setVisibility(View.GONE);
                                     if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("CALL AGAIN")) {
                                         mBinding.llReminder.setVisibility(View.VISIBLE);
                                     } else {
@@ -409,6 +410,9 @@ public class CallDialFeedbackAddressActivity extends AppCompatActivity {
                                                 mBinding.llReminder.setVisibility(View.VISIBLE);
                                             } else {
                                                 mBinding.llReminder.setVisibility(View.GONE);
+                                            }
+                                            if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("ADMISSION TAKEN IN SC")){
+                                                mBinding.tilAppNo.setVisibility(View.VISIBLE);
                                             }
                                         } else {
                                             mBinding.llReminder.setVisibility(View.GONE);
@@ -433,6 +437,8 @@ public class CallDialFeedbackAddressActivity extends AppCompatActivity {
     }
 
     private void checkValidation() {
+        CallDialFeedbackRequest callDialFeedbackRequest = new CallDialFeedbackRequest();
+
         if (mBinding.spStatus.getSelectedItemPosition() <= 0) {
             SnackBar.showValidationError(CallDialFeedbackAddressActivity.this, snakBarView, "Please select What happen on call");
             return;
@@ -501,7 +507,17 @@ public class CallDialFeedbackAddressActivity extends AppCompatActivity {
             }
         }
 
-        CallDialFeedbackRequest callDialFeedbackRequest = new CallDialFeedbackRequest();
+        if (leadStatusList.get(mBinding.spDispositions.getSelectedItemPosition()).getStatusName().equalsIgnoreCase("ADMISSION TAKEN IN SC")){
+            if (mBinding.edtAppNo.getText().toString().equalsIgnoreCase("")){
+                SnackBar.showValidationError(CallDialFeedbackAddressActivity.this, snakBarView, "Please enter Application number");
+                return;
+            }
+            callDialFeedbackRequest.setAppNo(Long.parseLong(mBinding.edtAppNo.getText().toString()));
+        }
+        else{
+            callDialFeedbackRequest.setAppNo(null);
+        }
+
         callDialFeedbackRequest.setMobileNo(strMobileNo);
         callDialFeedbackRequest.setAssignedTo(assignTo);
         callDialFeedbackRequest.setLeadId(leadId);

@@ -381,6 +381,18 @@ public class DGMDashboardResponse {
         @Expose
         private Integer notCommunicated;
 
+        public Integer getTotalAllotaedCountTotal() {
+            return totalAllotaedCountTotal;
+        }
+
+        public void setTotalAllotaedCountTotal(Integer totalAllotaedCountTotal) {
+            this.totalAllotaedCountTotal = totalAllotaedCountTotal;
+        }
+
+        @SerializedName("totalAllotaedCountTotal")
+        @Expose
+        private Integer totalAllotaedCountTotal ;
+
         public Integer getPending() {
             return pending;
         }

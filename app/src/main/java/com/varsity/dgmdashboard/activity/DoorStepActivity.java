@@ -186,11 +186,15 @@ public class DoorStepActivity extends AppCompatActivity {
                         mBinding.spDispositions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                mBinding.tilAppNo.setVisibility(View.GONE);
                                 mBinding.spDispositions.setText(leadStatusList.get(position).getStatusName(),false);
                                 if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("CALL AGAIN")) {
                                     mBinding.llReminder.setVisibility(View.VISIBLE);
                                 } else {
                                     mBinding.llReminder.setVisibility(View.GONE);
+                                }
+                                if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("ADMISSION TAKEN IN SC")){
+                                    mBinding.tilAppNo.setVisibility(View.VISIBLE);
                                 }
                             }
                         });
@@ -199,10 +203,15 @@ public class DoorStepActivity extends AppCompatActivity {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 if (position!=-1){
+                                    mBinding.tilAppNo.setVisibility(View.GONE);
                                     if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("CALL AGAIN")){
                                         mBinding.llReminder.setVisibility(View.VISIBLE);
                                     }else {
                                         mBinding.llReminder.setVisibility(View.GONE);
+                                    }
+
+                                    if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("ADMISSION TAKEN IN SC")){
+                                        mBinding.tilAppNo.setVisibility(View.VISIBLE);
                                     }
                                 }
                             }
@@ -333,6 +342,7 @@ public class DoorStepActivity extends AppCompatActivity {
 
 
     private void checkValidation() {
+        SaveDoorStepData request = new SaveDoorStepData();
         inTime = mBinding.tvInTime.getText().toString();
         outTime = mBinding.tvOutTime.getText().toString();
 
@@ -399,11 +409,22 @@ public class DoorStepActivity extends AppCompatActivity {
             }
         }
 
+        if (mBinding.spDispositions.getText().toString().equalsIgnoreCase("ADMISSION TAKEN IN SC")){
+            if (mBinding.edtAppNo.getText().toString().equalsIgnoreCase("")){
+                SnackBar.showValidationError(DoorStepActivity.this, snakBarView, "Please enter Application number");
+                return;
+            }
+            request.setAppNo(Long.parseLong(mBinding.edtAppNo.getText().toString()));
+        }
+        else{
+            request.setAppNo(null);
+        }
+
         if (mBinding.edtComment.getText().toString().equalsIgnoreCase("")) {
             SnackBar.showValidationError(DoorStepActivity.this, snakBarView, "Please enter comments");
             return;
         }
-        SaveDoorStepData request = new SaveDoorStepData();
+
         request.setCheckIn(inTime);
         request.setCheckOut(outTime);
         request.setAssignedTo(leadStatusListResponseModel.getAssignedTo());
