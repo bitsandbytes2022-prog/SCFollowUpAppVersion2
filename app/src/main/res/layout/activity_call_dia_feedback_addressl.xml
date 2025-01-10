@@ -635,7 +635,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:digits="1234567890"
-                        android:hint="Application Number *"
+                        android:hint="Enter Admission No. *"
                         android:fontFamily="@font/roboto_regular"
                         android:inputType="phone"
                         android:includeFontPadding="false"
