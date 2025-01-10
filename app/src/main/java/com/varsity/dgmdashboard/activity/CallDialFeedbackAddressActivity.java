@@ -401,6 +401,7 @@ public class CallDialFeedbackAddressActivity extends AppCompatActivity {
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 if (position != -1) {
                                     mBinding.tilAppNo.setVisibility(View.GONE);
+                                    leadStatusId =leadStatusList.get(position).getId();
                                     if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("CALL AGAIN")) {
                                         mBinding.llReminder.setVisibility(View.VISIBLE);
                                     } else {

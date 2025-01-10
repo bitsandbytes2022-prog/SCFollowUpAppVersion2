@@ -425,7 +425,7 @@ public class LeadEntryActivity extends AppCompatActivity {
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 mBinding.spDispositions.setText(leadStatusList.get(position).getStatusName(),false);
                                 Log.d("leadStatusID", String.valueOf(leadStatusList.get(position).getLeadCloseable()));
-                                leadData.setLeadStatusId(position);
+                                leadData.setLeadStatusId(leadStatusList.get(position).getId());
                                 leadData.setFollowupStatus(leadStatusList.get(position).getLeadCloseable());
                                 if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("CALL AGAIN")) {
                                     mBinding.llReminder.setVisibility(View.VISIBLE);
@@ -448,7 +448,7 @@ public class LeadEntryActivity extends AppCompatActivity {
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 if (position != -1) {
                                     Log.d("leadStatusID", String.valueOf(leadStatusList.get(position).getLeadCloseable()));
-                                    leadData.setLeadStatusId(position);
+                                    leadData.setLeadStatusId(leadStatusList.get(position).getId());
                                     leadData.setFollowupStatus(leadStatusList.get(position).getLeadCloseable());
                                     if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("CALL AGAIN")) {
                                         mBinding.llReminder.setVisibility(View.VISIBLE);

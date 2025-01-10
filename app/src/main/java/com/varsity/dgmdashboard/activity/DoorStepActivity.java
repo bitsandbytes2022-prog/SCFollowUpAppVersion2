@@ -63,6 +63,8 @@ public class DoorStepActivity extends AppCompatActivity {
     private String outTime = "";
     private double latitude = 0.0, longitude = 0.0;
 
+    private int leadStatusId = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -188,6 +190,7 @@ public class DoorStepActivity extends AppCompatActivity {
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 mBinding.tilAppNo.setVisibility(View.GONE);
                                 mBinding.spDispositions.setText(leadStatusList.get(position).getStatusName(),false);
+                                leadStatusId =leadStatusList.get(position).getId();
                                 if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("CALL AGAIN")) {
                                     mBinding.llReminder.setVisibility(View.VISIBLE);
                                 } else {
@@ -203,6 +206,7 @@ public class DoorStepActivity extends AppCompatActivity {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 if (position!=-1){
+                                    leadStatusId =leadStatusList.get(position).getId();
                                     mBinding.tilAppNo.setVisibility(View.GONE);
                                     if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("CALL AGAIN")){
                                         mBinding.llReminder.setVisibility(View.VISIBLE);
@@ -434,6 +438,7 @@ public class DoorStepActivity extends AppCompatActivity {
         request.setLat(latitude);
         request.setLog(longitude);
         request.setSource(leadStatusListResponseModel.getSource());
+        request.setLeadStatusId(leadStatusId);
         //request.setFollowUpType(leadStatusList.get(mBinding.spDispositions.getSelectedItemPosition()).getStatusName());
         request.setFollowUpType(mBinding.spDispositions.getText().toString());
         if (!mBinding.tvReminderDate.getText().toString().equalsIgnoreCase("")){

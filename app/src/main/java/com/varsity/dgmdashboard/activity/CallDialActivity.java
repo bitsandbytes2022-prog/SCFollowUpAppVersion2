@@ -208,6 +208,7 @@ public class CallDialActivity extends AppCompatActivity {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 if (position!=-1){
+                                    leadStatusId =leadStatusList.get(position).getId();
                                     mBinding.tilAppNo.setVisibility(View.GONE);
                                     if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("CALL AGAIN")){
                                         mBinding.llReminder.setVisibility(View.VISIBLE);

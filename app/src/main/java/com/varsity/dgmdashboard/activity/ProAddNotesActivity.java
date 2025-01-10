@@ -39,6 +39,7 @@ public class ProAddNotesActivity extends AppCompatActivity {
     private ArrayList<String> selectList = new ArrayList<>();
 
     private ProAddNoteRequest request = new ProAddNoteRequest();
+    private int leadStatusId = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,8 +116,9 @@ public class ProAddNotesActivity extends AppCompatActivity {
                         mBinding.spDispositions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                request.setLeadStatusId(position);
+//                                request.setLeadStatusId(position);
                                 mBinding.tilAppNo.setVisibility(View.GONE);
+                                leadStatusId =leadStatusList.get(position).getId();
                                 mBinding.spDispositions.setText(leadStatusList.get(position).getStatusName(), false);
                                 if (leadStatusList.get(position).getStatusName().equalsIgnoreCase("CALL AGAIN")) {
                                     mBinding.llReminder.setVisibility(View.VISIBLE);
@@ -314,6 +316,7 @@ public class ProAddNotesActivity extends AppCompatActivity {
         if (!mBinding.tvReminderDate.getText().toString().equalsIgnoreCase("")){
             request.setReminder(mBinding.tvReminderDate.getText().toString());
         }
+        request.setLeadStatusId(leadStatusId);
 
         if (DGMDashboardApplication.getInstance().isNetworkAvailable()) {
             dashboardViewModel.addProNotesData(snakBarView, request).observe(this, responseModel -> {
