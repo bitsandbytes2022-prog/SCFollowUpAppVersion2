@@ -137,10 +137,13 @@ public class CallDialActivity extends AppCompatActivity {
                             }else {
                                 mBinding.llReminder.setVisibility(View.GONE);
                             }
+                            if (leadStatusList.get(intDes).getStatusName().equalsIgnoreCase("ADMISSION TAKEN IN SC")){
+                                mBinding.tilAppNo.setVisibility(View.VISIBLE);
+                            }
+
                         }else {
                             mBinding.llReminder.setVisibility(View.GONE);
                         }
-
                     }
 
                 }
