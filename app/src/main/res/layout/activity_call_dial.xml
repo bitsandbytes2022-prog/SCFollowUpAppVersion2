@@ -306,8 +306,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0.7dp"
                                 android:background="@color/black" />
+                        </LinearLayout>
 
-                            <com.google.android.material.textfield.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilAppNo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -337,7 +338,6 @@
                                 android:textSize="@dimen/_10ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
-                        </LinearLayout>
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="match_parent"
