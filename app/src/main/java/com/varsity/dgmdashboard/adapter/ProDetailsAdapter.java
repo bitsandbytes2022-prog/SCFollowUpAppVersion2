@@ -57,9 +57,9 @@ public class ProDetailsAdapter extends RecyclerView.Adapter<ProDetailsAdapter.Da
         int total = list.get(position).getCommunicatedLeads() + list.get(position).getCompletedLeads() + list.get(position).getPendingLeads();
         holder.mBinding.tvTotalAllotmentCount.setText("" + total);
 
-        holder.mBinding.tvCommunicated.setText("Communicated " + list.get(position).getCommunicatedLeads());
-        holder.mBinding.tvConverted.setText("Converted " + list.get(position).getCompletedLeads());
-        holder.mBinding.tvPending.setText("Pending " + list.get(position).getPendingLeads());
+        holder.mBinding.tvCommunicated.setText(" " + list.get(position).getCommunicatedLeads());
+        holder.mBinding.tvConverted.setText(" " + list.get(position).getCompletedLeads());
+        holder.mBinding.tvPending.setText(" " + list.get(position).getPendingLeads());
 
         holder.mBinding.ivNote.setOnClickListener(new View.OnClickListener() {
             @Override

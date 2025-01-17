@@ -39,12 +39,10 @@
                 app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
                 android:id="@+id/llLeadData"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:background="@drawable/spinner_bg"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="70dp"
-                android:layout_marginBottom="90dp"
                 android:padding="@dimen/_10sdp"
                 app:layout_constraintTop_toBottomOf="@id/tvAssignLeads">
 
@@ -67,8 +65,9 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/llArea"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/spArea">
 
                     <View
@@ -203,8 +202,6 @@
                         android:orientation="vertical"
                         tools:itemCount="10"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        app:layout_constraintBottom_toTopOf="@id/btnSubmit"
-                        app:layout_constraintTop_toBottomOf="@id/llArea"
                         tools:listitem="@layout/row_assign_lead_manually" />
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -214,8 +211,6 @@
                         android:orientation="vertical"
                         tools:itemCount="10"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        app:layout_constraintBottom_toTopOf="@id/btnSubmit"
-                        app:layout_constraintTop_toBottomOf="@id/llArea"
                         tools:listitem="@layout/row_assign_lead_manually" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
