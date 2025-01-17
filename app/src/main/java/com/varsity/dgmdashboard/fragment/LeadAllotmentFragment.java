@@ -305,7 +305,7 @@ public class LeadAllotmentFragment extends Fragment implements LeadAllocationMan
     public void updateLeadCount(GetProDetailsLeadResponse data, int leadCount, int type, int position) {
         if (request != null) {
             AssignLeadManualRequest.AssignTo assignTo = new AssignLeadManualRequest.AssignTo();
-            assignTo.setEmpID(data.getAssignedTo());
+            assignTo.setEmpID(data.getId());
             assignTo.setLeadCount(leadCount);
             assignToArrayList.set(position, assignTo);
         }
